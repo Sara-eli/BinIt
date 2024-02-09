@@ -1,0 +1,17 @@
+welcome {{panchayath.panchayath_name}}
+{% if msg %}
+<script>
+    alert("{{msg}}")
+    window.location ="{% url 'webpanchayath:panchayathhomepg' %}"
+</script>
+{% endif %}
+<br><br>
+<a href="{% url 'webpanchayath:workerregistration' %}">Workerregistration</a><br>
+<a href="{% url 'webpanchayath:changepassword' %}">Changepassword</a><br>
+<a href="{% url 'webpanchayath:editprofile' %}">Editprofile</a><br>
+<a href="{% url 'webpanchayath:panchayathmyprofile' %}">Myprofile</a><br>
+<a href="{% url 'webpanchayath:viewcomplaint' %}">Viewcomplaint</a><br>
+<a href="{% url 'webpanchayath:viewfeedback' %}">Viewfeedback</a><br>
+<a href="{% url 'webpanchayath:viewward' %}">Viewward</a><br>
+<a href="{% url 'webpanchayath:workerlist' %}">Workerlist</a>
+

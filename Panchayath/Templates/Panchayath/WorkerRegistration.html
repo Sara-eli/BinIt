@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="POST"  enctype="multipart/form-data">
+        {% csrf_token %}
+        <table border="1" align="center" cellpadding="10">
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="txt_name" id=""></td>
+            </tr>
+            <tr>
+                <td>Contact</td>
+                <td><input type="text" name="txt_contact" id=""></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="email" name="txt_email" id=""></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" name="txt_password" id=""></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td><input type="radio" name="txt_gender" id="" value="male">Male
+                    <input type="radio" name="txt_gender" id=""  value="Female">Female</td>
+            </tr>
+            <tr>
+                <td>Ward</td>
+                <td><select name="sel_ward" id="">
+                    <option value="">select</option>
+                    {% for i in ward %}
+                    <option value="{{i.id}}">{{i.ward_number}}</option>
+                    {% endfor %}
+                </select></td>
+            </tr>
+            <tr>
+                <td>Photo</td>
+                <td><input type="file" name="txt_photo" id=""></td>
+            </tr>
+            <tr>
+                <td>Proof</td>
+                <td><input type="file" name="txt_proof" id=""></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2"><input type="submit" value="Save">
+                <input type="reset" value="Cancel"></td>
+            </tr>
+        </table>
+        <br><br>
+
+        <table border="1" align="center"  cellpadding="10">
+            <tr>
+                <td>Sl No.</td>
+                <td>Name</td>
+                <td>Contact</td>
+                <td>Email</td>
+                <td>Photo</td>
+                <td>Proof</td>
+                <td>Gender</td>
+                <td>Ward</td>
+                <td>Action</td> 
+            </tr>
+            {% for i in workerdetails %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.worker_name}}</td>      
+                <td>{{i.worker_contact}}</td>
+                <td>{{i.worker_email}}</td>
+                <td><img src="{{i.worker_photo.url}}" width="150" height="150" alt=""></td>
+                <td><img src="{{i.worker_proof.url}}" width="150" height="150" alt=""></td>
+                <td>{{i.worker_gender}}</td>
+                <td>{{i.ward_id.ward_number}}</td>
+                <td><a href="{% url  'webpanchayath:delete_worker' i.id  %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+</html>

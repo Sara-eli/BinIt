@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table border="1" align="center"  cellpadding="10">
+            <tr>
+                <td>Sl No.</td>
+                <td>Name</td>
+                <td>Contact</td>
+                <td>Email</td>
+                <td>Photo</td>
+                <td>Proof</td>
+                <td>Gender</td>
+                <td>Panchayath</td>
+                <td>Ward</td>
+                <td>Action</td> 
+            </tr>
+            {% for i in workerdetails %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.worker_name}}</td>
+                <td>{{i.worker_contact}}</td>
+                <td>{{i.worker_email}}</td>
+                <td><img src="{{i.worker_photo.url}}" width="150" height="150" alt=""></td>
+                <td><img src="{{i.worker_proof.url}}" width="150" height="150" alt=""></td>
+                <td>{{i.worker_gender}}</td>
+                <td>{{i.ward_id.panchayath.panchayath_name}}</td>
+                <td>{{i.ward_id.ward_number}}</td>
+                <td><a href="{% url  'webadmin:verify_worker' i.id  %}">Reject</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+</html>

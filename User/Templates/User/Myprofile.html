@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <form action="" method="post">
+    {% csrf_token %}
+    <table border="1" align="center" cellpadding="10">
+        <tr>
+            <td>Name</td>
+            <td>{{user.user_name}}</td>
+        </tr>
+        <tr>
+            <td>Contact</td>
+            <td>{{user.user_contact}}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{user.user_email}}</td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>{{user.user_gender}}</td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>{{user.user_address}}</td>
+        </tr>
+        <tr>
+            <td>Panchayath</td>
+            <td>{{user.place.ward.panchayath.panchayath_name}}</td>
+        </tr>
+        <tr>
+            <td>Ward</td>
+            <td>{{user.place.ward.ward_number}}</td>
+        </tr>
+        <tr>
+            <td>Ward</td>
+            <td>{{user.place.place_name}}</td>
+        </tr>
+    </table>
+   </form> 
+</body>
+</html>

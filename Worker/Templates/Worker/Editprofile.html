@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table border="1" align="center" cellpadding="10">
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="txt_name" id="" value="{{worker.worker_name}}"></td>
+            </tr>
+            <tr>
+                <td>Contact</td>
+                <td><input type="text" name="txt_contact" id="" value="{{worker.worker_contact}}"></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2"><input type="submit" value="Update">
+                <input type="reset" value="Cancel"></td>
+                
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

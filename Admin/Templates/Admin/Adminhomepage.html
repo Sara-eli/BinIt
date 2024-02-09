@@ -1,0 +1,18 @@
+welcome {{admin.admin_name}}
+{% if msg %}
+<script>
+    alert("{{msg}}")
+    window.location ="{% url 'webadmin:adminhomepg' %}"
+
+</script>
+{% endif %}
+<br><br>
+<a href="{% url 'webadmin:panchayath' %}">Add Panchayath</a><br>
+<a href="{% url 'webadmin:ward' %}">Add Ward</a><br>
+<a href="{% url 'webadmin:place' %}">Add Place</a><br>
+<a href="{% url 'webadmin:wastetype' %}">Add wastetype</a><br>
+<a href="{% url 'webadmin:Workerverification' %}">Worker Verification</a><br>
+<a href="{% url 'webadmin:verify' %}">Verified Workers</a><br>
+<a href="{% url 'webadmin:reject' %}">Rejected Workers</a><br>
+
+

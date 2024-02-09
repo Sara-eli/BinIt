@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table border="1" align="center" cellpadding="5">
+            <tr>
+                <td>Waste Type</td>
+                <td><input type="text" name="txt_waste" id="" value="{{up_waste.waste_type}}"></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2"><input type="submit" value="Save">
+                <input type="reset" value="Cancel">
+                </td>
+            </tr>
+        </table>
+        <br><br><br>
+        <table border="1" align="center" cellpadding="10">
+            <tr>
+                <td>sl.No</td>
+                <td>Waste Type</td>
+                <td>Action</td>
+            </tr>
+            {% for i in diswaste %}
+            <tr>
+                
+                <td>{{forloop.counter}}</td>
+                <td>{{i.waste_type}}</td>
+                <td><a href="{% url 'webadmin:del_waste' i.id %}">Delete</a>
+                    <a href="{% url 'webadmin:up_waste' i.id %}">Update</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+</html>

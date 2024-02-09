@@ -1,0 +1,14 @@
+welcome {{user.user_name}}
+{% if msg %}
+<script>
+    alert("{{msg}}")
+    window.location ="{% url 'webuser:userhomepg' %}"
+</script>
+{% endif %}
+<br><br>
+<a href="{% url 'webuser:myprofile' %}">My profile</a><br>
+<a href="{% url 'webuser:changepassword' %}">Changepassword</a><br>
+<a href="{% url 'webuser:editprofile' %}">Editprofile</a><br>
+<a href="{% url 'webuser:feedback' %}">Feedback</a><br>
+<a href="{% url 'webuser:complaint' %}">Complaint</a><br>
+<a href="{% url 'webuser:viewreply' %}">View Reply</a><br>

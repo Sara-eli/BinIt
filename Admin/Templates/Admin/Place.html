@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post" id="UserForm" data-ward-url="{% url 'webadmin:Ajaxward' %}">
+        {% csrf_token %}
+        <table align="center" border="1" cellpadding="5">
+            <tr>
+                <td>Panchayath</td>
+                <td><select name="txt_panchayath" id="sel_panchayath" value="{{upplace.ward.panchayath_name}}">
+                    <option value="">select</option>
+                    {% for i in dispanchayath %}
+                    <option 
+                    value="{{i.id}}">{{i.panchayath_name}}</option>
+                    {% endfor %}
+                </select></td>
+            </tr>
+            <tr>
+                <td>Ward No</td>
+                <td><select name="txt_ward" id="sel_ward" >
+                    <option value="">select</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>Place</td>
+                <td><input type="text" name="txt_place" id=""></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="Submit">
+                    <input type="reset" value="Cancel"></td>
+                
+            </tr>
+        </table>
+
+        <br><br>
+        <table border="1" align="center" cellpadding="1">
+            <tr>
+                <td>sl No</td>
+                <td>Panchayath</td>
+                <td>Ward</td>
+                <td>Place</td>
+                <td>Action</td>
+            </tr>
+            {% for i in diplace %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.ward.panchayath.panchayath_name}}</td>
+                <td>{{i.ward.ward_number}}</td>
+                <td>{{i.place_name}}</td>
+                <td><a href="{% url  'webadmin:del_place' i.id  %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+</html>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $("#sel_panchayath").change(function () {
+            var did = $(this).val();
+            var ur = $("#UserForm").attr("data-ward-url");
+            $.ajax({
+                url: ur,
+                data: { WARD: did, },
+                success: function (data) {
+                    $("#sel_ward").html(data);
+                },
+            });
+        });
+</script>

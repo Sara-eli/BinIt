@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        <table border="1" align="center">
+            <tr>
+                <td>#</td>
+                <td>Feedback</td>
+                <td>User Name</td>
+                <td>Ward Number</td>
+            </tr>
+            {% for i in feedback %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.feedback_content}}</td>
+                <td>{{i.user.user_name}}</td>
+                <td>{{i.user.place.ward.ward_number}}</td>
+            </tr>
+            {% endfor%}
+        </table>
+    </form>
+</body>
+</html>

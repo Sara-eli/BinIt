@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <form action="" method="post">
+    {% csrf_token %}
+    <table border="1" align="center" cellpadding="10">
+        <tr>
+            <td>Name</td>
+            <td>{{panchayath.panchayath_name}}</td>
+        </tr>
+        <tr>
+            <td>Contact</td>
+            <td>{{panchayath.panchayath_contact}}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{panchayath.panchayath_email}}</td>
+        </tr>
+    </table>
+   </form> 
+</body>
+</html>

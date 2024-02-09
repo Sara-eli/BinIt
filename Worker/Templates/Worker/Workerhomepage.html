@@ -1,0 +1,10 @@
+welcome {{worker.worker_name}}
+{% if msg %}
+<script>
+    alert("{{msg}}")
+    window.location ="{% url 'webworker:workerhomepg' %}"
+</script>
+{% endif %}
+<br><br>
+<a href="{% url 'webworker:myprofile' %}">My profile</a><br>
+<a href="{% url 'webworker:editprofile' %}">Editprofile</a><br>
